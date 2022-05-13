@@ -9,11 +9,13 @@ public class ErrorResponse {
 	int code;
 	String status;
 	String message;
+
 	public ErrorResponse() {
 		super();
 		// TODO Auto-generated constructor stub
 		date = new Date();
 	}
+
 	public ErrorResponse(HttpStatus status, String message) {
 		super();
 		date = new Date();
@@ -21,30 +23,37 @@ public class ErrorResponse {
 		this.status = status.name();
 		this.message = message;
 	}
+
 	public Date getDate() {
 		return date;
 	}
+
 	public void setDate(Date date) {
 		this.date = date;
 	}
+
 	public int getCode() {
 		return code;
 	}
+
 	public void setCode(int code) {
 		this.code = code;
 	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 	public String getMessage() {
 		return message;
 	}
+
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	
-	
+
 }

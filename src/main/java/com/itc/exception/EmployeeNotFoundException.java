@@ -21,5 +21,5 @@ public class EmployeeNotFoundException extends Exception {
 		super(cause);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 }

@@ -24,55 +24,64 @@ import com.itc.views.Views;
 @RequestMapping("/employee")
 public class EmployeeController {
 	EmployeeService employeeService;
+
 	public EmployeeService getEmployeeService() {
 		return employeeService;
 	}
+
 	@Autowired
 	public void setEmployeeService(EmployeeService employeeService) {
 		this.employeeService = employeeService;
 	}
+
 	@GetMapping("details")
-	public ResponseEntity<List<Employee>> findAll(){
+	public ResponseEntity<List<Employee>> findAll() {
 		List<Employee> employee = employeeService.findAllEmployees();
-		ResponseEntity<List<Employee>>  responseEntity = new ResponseEntity<List<Employee>>(employee,HttpStatus.OK);
+		ResponseEntity<List<Employee>> responseEntity = new ResponseEntity<List<Employee>>(employee, HttpStatus.OK);
 		return responseEntity;
 	}
+
 	@GetMapping("names")
 	@JsonView(Views.MyResponseViews.class)
-	public ResponseEntity<List<Employee>> findAllOnlyName(){
+	public ResponseEntity<List<Employee>> findAllOnlyName() {
 		List<Employee> employee = employeeService.findAllEmployees();
-		ResponseEntity<List<Employee>>  responseEntity = new ResponseEntity<List<Employee>>(employee,HttpStatus.OK);
+		ResponseEntity<List<Employee>> responseEntity = new ResponseEntity<List<Employee>>(employee, HttpStatus.OK);
 		return responseEntity;
 	}
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Employee> findById(@PathVariable("id") int id) throws EmployeeNotFoundException{
+	public ResponseEntity<Employee> findById(@PathVariable("id") int id) throws EmployeeNotFoundException {
 		Employee employee = employeeService.findEmployeeById(id);
-		ResponseEntity<Employee>  responseEntity = new ResponseEntity<Employee>(employee,HttpStatus.OK);
+		ResponseEntity<Employee> responseEntity = new ResponseEntity<Employee>(employee, HttpStatus.OK);
 		return responseEntity;
 	}
+
 	@GetMapping("/{name}/{email}")
-	public ResponseEntity<List<Employee>> findByNameAndId(@PathVariable("name") String name,@PathVariable("email") String email) throws EmployeeNotFoundException{
+	public ResponseEntity<List<Employee>> findByNameAndId(@PathVariable("name") String name,
+			@PathVariable("email") String email) throws EmployeeNotFoundException {
 		List<Employee> employee = employeeService.findEmployeeByNameAndEmail(name, email);
-		ResponseEntity<List<Employee>>  responseEntity = new ResponseEntity<List<Employee>>(employee,HttpStatus.OK);
+		ResponseEntity<List<Employee>> responseEntity = new ResponseEntity<List<Employee>>(employee, HttpStatus.OK);
 		return responseEntity;
-	}	
+	}
+
 	@PostMapping
-	public ResponseEntity<Employee> save(@RequestBody Employee employee){
-		Employee emp= employeeService.save(employee);
-		ResponseEntity<Employee>  responseEntity = new ResponseEntity<Employee>(emp,HttpStatus.OK);
+	public ResponseEntity<Employee> save(@RequestBody Employee employee) {
+		Employee emp = employeeService.save(employee);
+		ResponseEntity<Employee> responseEntity = new ResponseEntity<Employee>(emp, HttpStatus.OK);
 		return responseEntity;
 	}
+
 	@PutMapping
-	public ResponseEntity<Employee> edit(@RequestBody Employee employee) throws EmployeeNotFoundException{
+	public ResponseEntity<Employee> edit(@RequestBody Employee employee) throws EmployeeNotFoundException {
 		Employee emp = employeeService.update(employee);
-		ResponseEntity<Employee>  responseEntity = new ResponseEntity<Employee>(emp,HttpStatus.OK);
+		ResponseEntity<Employee> responseEntity = new ResponseEntity<Employee>(emp, HttpStatus.OK);
 		return responseEntity;
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Employee> delete(@PathVariable("id") int id) throws EmployeeNotFoundException{
+	public ResponseEntity<Employee> delete(@PathVariable("id") int id) throws EmployeeNotFoundException {
 		Employee employee = employeeService.delete(id);
-		ResponseEntity<Employee>  responseEntity = new ResponseEntity<Employee>(employee,HttpStatus.OK);
+		ResponseEntity<Employee> responseEntity = new ResponseEntity<Employee>(employee, HttpStatus.OK);
 		return responseEntity;
 	}
 }

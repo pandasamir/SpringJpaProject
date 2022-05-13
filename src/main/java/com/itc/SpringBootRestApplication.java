@@ -13,7 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 @SpringBootApplication
-@EnableAspectJAutoProxy(proxyTargetClass=true)
 @EnableSwagger2
 public class SpringBootRestApplication {
 
@@ -22,7 +21,8 @@ public class SpringBootRestApplication {
 	}
 	
 
-	  @Bean public Docket api() {
+	  @Bean 
+	  public Docket api() {
 	  
 	  return new Docket(DocumentationType.SWAGGER_2).select().apis(x ->
 	  true).paths(y -> true).build();

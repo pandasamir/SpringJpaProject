@@ -1,5 +1,6 @@
 package com.itc.views;
 
 public class Views {
-	public interface MyResponseViews{};
+	public interface MyResponseViews {
+	};
 }
