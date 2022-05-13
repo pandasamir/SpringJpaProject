@@ -7,5 +7,5 @@ import com.itc.entity.Employee;
 
 @Repository
 public interface EmployeeRepo extends JpaRepository<Employee, Integer> {
-	
+
 }
